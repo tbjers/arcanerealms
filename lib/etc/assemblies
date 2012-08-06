@@ -1,0 +1,1487 @@
+Vnum                #5 make
+Skill               #16 1000
+Time                #2
+Hidden              #0
+Produces            #5
+Component           #4495 1 0 1
+Component           #139 0 0 1
+Component           #127 0 1 1
+
+Vnum                #6 make
+Skill               #16 2000
+Time                #3
+Hidden              #0
+Produces            #5
+Component           #4495 1 0 1
+Component           #127 0 1 1
+Component           #139 0 0 1
+
+Vnum                #13 cook
+Skill               #77 1500
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #12 1 0 1
+Component           #10129 0 0 1
+
+Vnum                #17 make
+Skill               #123 2000
+Time                #2
+Hidden              #0
+Produces            #2
+Component           #4495 1 0 1
+Component           #139 0 0 1
+Component           #167 0 0 1
+Component           #127 0 1 1
+
+Vnum                #18 craft
+Skill               #92 2000
+Time                #3
+Hidden              #0
+Produces            #6
+Component           #124 1 0 1
+Component           #151 0 0 1
+
+Vnum                #19 make
+Skill               #122 1000
+Time                #2
+Hidden              #0
+Produces            #4
+Component           #4401 1 0 1
+Component           #127 0 1 1
+Component           #167 0 0 1
+
+Vnum                #20 butcher
+Skill               #42 1000
+Time                #1
+Hidden              #0
+Produces            #1
+Component           #72 1 0 1
+Component           #10140 0 0 1
+Byproduct           #21 1 1
+
+Vnum                #22 butcher
+Skill               #42 1000
+Time                #2
+Hidden              #0
+Produces            #2
+Component           #70 1 0 1
+Component           #10140 0 0 1
+Byproduct           #12 1 1
+
+Vnum                #26 make
+Skill               #123 2500
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #4495 1 0 1
+Component           #139 0 0 1
+Component           #167 0 0 1
+Component           #127 0 1 1
+
+Vnum                #28 make
+Skill               #123 2000
+Time                #2
+Hidden              #0
+Produces            #2
+Component           #4401 1 0 1
+Component           #139 0 0 1
+Component           #167 0 0 1
+Component           #127 0 1 1
+
+Vnum                #29 craft
+Skill               #90 1000
+Time                #2
+Hidden              #0
+Produces            #4
+Component           #151 0 0 1
+Component           #123 1 0 1
+AltComponent        #123 121
+AltComponent        #123 122
+AltComponent        #123 124
+AltComponent        #123 53
+AltComponent        #123 54
+
+Vnum                #30 cook
+Skill               #77 1000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #76 1 0 1
+Component           #10130 0 1 1
+Byproduct           #11 1 1
+
+Vnum                #32 make
+Skill               #74 1000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #166 1 0 1
+Component           #10140 0 0 1
+
+Vnum                #38 bake
+Skill               #121 1000
+Time                #7
+Hidden              #0
+Produces            #3
+Component           #46 1 0 1
+Component           #41 0 0 1
+
+Vnum                #40 craft
+Skill               #127 500
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #4480 0 1 1
+Component           #41 1 0 1
+
+Vnum                #45 make
+Skill               #16 3000
+Time                #3
+Hidden              #0
+Produces            #4
+Component           #4495 1 0 1
+Component           #127 0 1 1
+Component           #167 0 0 1
+
+Vnum                #46 bake
+Skill               #121 200
+Time                #2
+Hidden              #0
+Produces            #25
+Component           #35 1 0 1
+
+Vnum                #48 make
+Skill               #16 1500
+Time                #3
+Hidden              #0
+Produces            #12
+Component           #4495 1 0 1
+Component           #127 0 1 1
+Component           #167 0 0 1
+
+Vnum                #53 craft
+Skill               #90 500
+Time                #1
+Hidden              #0
+Produces            #8
+Component           #128 0 0 1
+Component           #129 0 0 1
+Component           #10217 1 0 1
+
+Vnum                #54 craft
+Skill               #90 500
+Time                #1
+Hidden              #0
+Produces            #5
+Component           #128 0 0 1
+Component           #129 0 0 1
+Component           #10218 1 0 1
+
+Vnum                #65 cook
+Skill               #77 500
+Time                #1
+Hidden              #0
+Produces            #2
+Component           #60 1 1 1
+Component           #10129 0 1 1
+Component           #85 1 1 1
+
+Vnum                #66 cook
+Skill               #77 1000
+Time                #1
+Hidden              #0
+Produces            #2
+Component           #61 1 1 1
+Component           #10129 0 1 1
+Component           #85 1 1 1
+
+Vnum                #67 cook
+Skill               #77 1000
+Time                #1
+Hidden              #0
+Produces            #2
+Component           #62 1 1 1
+Component           #10129 0 1 1
+Component           #85 1 1 1
+
+Vnum                #68 cook
+Skill               #77 1000
+Time                #1
+Hidden              #0
+Produces            #2
+Component           #63 1 1 1
+Component           #10129 0 1 1
+Component           #85 1 1 1
+
+Vnum                #75 cook
+Skill               #77 1000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #10130 0 1 1
+Component           #22 1 0 1
+Byproduct           #11 1 1
+
+Vnum                #76 butcher
+Skill               #42 1000
+Time                #2
+Hidden              #0
+Produces            #2
+Component           #71 1 0 1
+Component           #10140 0 0 1
+Byproduct           #8 1 1
+
+Vnum                #77 cook
+Skill               #77 1000
+Time                #2
+Hidden              #0
+Produces            #4
+Component           #83 1 0 1
+Component           #10131 0 1 1
+Component           #84 1 0 1
+Component           #3405 0 1 1
+Component           #85 1 0 1
+Component           #20 1 0 1
+
+Vnum                #78 cook
+Skill               #77 1000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #164 1 0 1
+Component           #10130 0 1 1
+
+Vnum                #86 cook
+Skill               #77 600
+Time                #2
+Hidden              #0
+Produces            #2
+Component           #84 1 0 1
+Component           #10129 0 0 1
+Component           #85 1 0 1
+
+Vnum                #88 cook
+Skill               #77 700
+Time                #2
+Hidden              #0
+Produces            #2
+Component           #10131 0 1 1
+Component           #87 1 0 1
+
+Vnum                #100 sew
+Skill               #75 3000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 2
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10140 0 0 1
+
+Vnum                #102 sew
+Skill               #75 3000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 2
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10140 0 0 1
+
+Vnum                #103 make
+Skill               #74 2500
+Time                #3
+Hidden              #0
+Produces            #3
+Component           #10132 1 0 1
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+Component           #10139 1 0 1
+Component           #47 0 1 1
+Byproduct           #166 3 1
+
+Vnum                #104 make
+Skill               #74 0
+Time                #4
+Hidden              #0
+Produces            #4
+Component           #24 1 0 1
+Component           #10132 1 0 3
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+Byproduct           #166 1 4
+
+Vnum                #105 make
+Skill               #74 2000
+Time                #2
+Hidden              #0
+Produces            #4
+Component           #10139 1 0 1
+Component           #10132 1 0 1
+Component           #144 0 0 1
+Component           #10140 0 0 1
+Component           #10142 0 0 1
+
+Vnum                #106 sew
+Skill               #75 2000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 1
+Component           #10133 1 0 1
+Component           #10140 0 0 1
+Component           #1843 0 0 1
+
+Vnum                #108 make
+Skill               #74 1000
+Time                #3
+Hidden              #0
+Produces            #14
+Component           #10139 1 0 1
+Component           #7 1 0 14
+Component           #10132 1 0 4
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+Byproduct           #166 1 4
+
+Vnum                #109 craft
+Skill               #90 3000
+Time                #3
+Hidden              #0
+Produces            #2
+Component           #123 1 0 1
+Component           #128 0 0 1
+Component           #151 0 0 1
+Component           #139 0 0 1
+Component           #166 1 0 1
+Component           #16 1 0 2
+
+Vnum                #110 make
+Skill               #122 2000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #17 1 0 1
+Component           #18 1 0 1
+Component           #19 1 0 1
+Component           #167 0 0 1
+Byproduct           #17 1 1
+
+Vnum                #111 make
+Skill               #122 3000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #26 1 0 1
+Component           #19 1 0 1
+Component           #27 1 0 1
+
+Vnum                #112 craft
+Skill               #92 300
+Time                #3
+Hidden              #0
+Produces            #5
+Component           #124 1 0 1
+Component           #151 0 0 1
+
+Vnum                #113 make
+Skill               #122 1000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #28 1 0 1
+Component           #29 1 0 1
+Component           #32 1 0 1
+
+Vnum                #114 craft
+Skill               #92 500
+Time                #1
+Hidden              #0
+Produces            #1
+Component           #29 1 0 1
+Component           #151 0 0 1
+
+Vnum                #116 craft
+Skill               #21 1500
+Time                #1
+Hidden              #0
+Produces            #3
+Component           #153 1 0 1
+Component           #10140 0 0 1
+
+Vnum                #118 cook
+Skill               #77 800
+Time                #2
+Hidden              #0
+Produces            #3
+Component           #1841 1 0 1
+Component           #10129 0 0 1
+Component           #85 1 0 1
+
+Vnum                #119 cook
+Skill               #77 1000
+Time                #1
+Hidden              #0
+Produces            #2
+Component           #4 1 0 2
+Component           #85 1 0 1
+Component           #10129 0 0 1
+
+Vnum                #120 sew
+Skill               #75 2000
+Time                #4
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 5
+Component           #1843 0 0 1
+Component           #10140 0 0 1
+Component           #10133 1 0 2
+
+Vnum                #121 craft
+Skill               #90 500
+Time                #1
+Hidden              #0
+Produces            #8
+Component           #129 0 0 1
+Component           #128 0 0 1
+Component           #10214 1 0 1
+
+Vnum                #122 craft
+Skill               #90 500
+Time                #2
+Hidden              #0
+Produces            #6
+Component           #129 0 0 1
+Component           #128 0 0 1
+Component           #10215 1 0 1
+
+Vnum                #123 craft
+Skill               #90 500
+Time                #2
+Hidden              #0
+Produces            #10
+Component           #129 0 0 1
+Component           #128 0 0 1
+Component           #10213 1 0 1
+
+Vnum                #124 craft
+Skill               #90 500
+Time                #2
+Hidden              #0
+Produces            #6
+Component           #129 0 0 1
+Component           #128 0 0 1
+Component           #10216 1 0 1
+
+Vnum                #130 craft
+Skill               #12 500
+Time                #1
+Hidden              #0
+Produces            #5
+Component           #10149 1 0 1
+Component           #10140 0 0 1
+
+Vnum                #132 sew
+Skill               #75 500
+Time                #3
+Hidden              #0
+Produces            #3
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10140 0 0 1
+Component           #10149 1 0 3
+Component           #10154 1 0 1
+
+Vnum                #133 craft
+Skill               #90 4500
+Time                #4
+Hidden              #0
+Produces            #4
+Component           #139 0 0 1
+Component           #150 0 0 1
+Component           #129 0 0 1
+Component           #123 1 0 2
+
+Vnum                #134 craft
+Skill               #90 2500
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #139 0 0 1
+Component           #150 0 0 1
+Component           #129 0 0 1
+Component           #149 1 0 1
+Component           #121 1 0 8
+AltComponent        #122 121
+AltComponent        #122 123
+AltComponent        #122 124
+
+Vnum                #137 craft
+Skill               #7 1000
+Time                #1
+Hidden              #0
+Produces            #1
+Component           #33 1 0 1
+Component           #29 1 0 1
+Component           #34 1 0 1
+
+Vnum                #145 bake
+Skill               #121 2500
+Time                #3
+Hidden              #0
+Produces            #6
+Component           #135 1 0 1
+Component           #36 0 1 1
+Component           #37 0 0 1
+Component           #38 1 0 1
+Component           #39 1 0 1
+Byproduct           #38 1 2
+
+Vnum                #148 bake
+Skill               #121 3000
+Time                #3
+Hidden              #0
+Produces            #12
+Component           #135 1 0 1
+Component           #35 1 0 1
+Component           #37 0 0 1
+Component           #36 0 1 1
+Component           #38 1 0 2
+Component           #39 1 0 1
+Byproduct           #38 2 2
+
+Vnum                #152 cook
+Skill               #77 500
+Time                #2
+Hidden              #0
+Produces            #3
+Component           #83 1 0 1
+Component           #10150 0 0 1
+Component           #85 1 0 1
+
+Vnum                #154 craft
+Skill               #15 500
+Time                #2
+Hidden              #0
+Produces            #3
+Component           #29 1 0 1
+Component           #40 1 0 1
+
+Vnum                #155 make
+Skill               #74 4000
+Time                #3
+Hidden              #0
+Produces            #3
+Component           #24 1 0 1
+Component           #10132 1 0 3
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+Byproduct           #166 3 1
+
+Vnum                #156 make
+Skill               #74 2000
+Time                #3
+Hidden              #0
+Produces            #5
+Component           #7 1 0 10
+Component           #10139 1 0 1
+Component           #10132 1 0 2
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+
+Vnum                #157 sew
+Skill               #74 2000
+Time                #5
+Hidden              #0
+Produces            #4
+Component           #10139 1 0 1
+Component           #10132 1 0 1
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+
+Vnum                #159 make
+Skill               #74 4000
+Time                #4
+Hidden              #0
+Produces            #1
+Component           #10139 1 0 1
+Component           #7 1 0 3
+Component           #10132 1 0 2
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+Byproduct           #166 3 2
+
+Vnum                #160 make
+Skill               #74 3500
+Time                #3
+Hidden              #0
+Produces            #2
+Component           #24 1 0 1
+Component           #10132 1 0 2
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+
+Vnum                #161 make
+Skill               #74 3000
+Time                #4
+Hidden              #0
+Produces            #2
+Component           #10139 1 0 1
+Component           #5 1 0 50
+Component           #10132 1 0 4
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+Byproduct           #166 4 1
+
+Vnum                #162 make
+Skill               #74 3000
+Time                #5
+Hidden              #0
+Produces            #3
+Component           #10139 1 0 1
+Component           #10132 1 0 4
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+Component           #7 1 0 6
+Byproduct           #166 2 2
+
+Vnum                #163 make
+Skill               #74 3000
+Time                #3
+Hidden              #0
+Produces            #3
+Component           #10139 1 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+Component           #10132 1 0 4
+Component           #10142 0 0 1
+
+Vnum                #164 butcher
+Skill               #42 1500
+Time                #1
+Hidden              #0
+Produces            #1
+Component           #73 1 0 1
+Component           #10140 0 0 1
+Byproduct           #153 1 1
+
+Vnum                #165 cook
+Skill               #77 300
+Time                #2
+Hidden              #0
+Produces            #6
+Component           #4 1 0 6
+Component           #10150 0 0 1
+
+Vnum                #173 make
+Skill               #74 3000
+Time                #4
+Hidden              #0
+Produces            #2
+Component           #10139 1 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+Component           #10132 1 0 4
+Component           #10142 0 0 1
+Byproduct           #166 4 1
+
+Vnum                #174 make
+Skill               #124 3500
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #127 0 1 1
+Component           #167 0 0 1
+Component           #4495 1 0 2
+Byproduct           #42 1 1
+
+Vnum                #177 make
+Skill               #124 3000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #4495 1 0 3
+Component           #16 1 0 1
+Component           #127 0 1 1
+Component           #167 0 0 1
+
+Vnum                #179 make
+Skill               #124 5000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #4495 1 0 2
+Component           #127 0 1 1
+Component           #167 0 0 1
+Byproduct           #42 1 1
+
+Vnum                #183 make
+Skill               #122 3000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #27 1 0 1
+Component           #19 1 0 1
+Component           #167 0 0 1
+Component           #43 1 0 1
+
+Vnum                #184 make
+Skill               #122 4000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #44 1 0 1
+Component           #43 1 0 1
+Component           #19 1 0 1
+Component           #167 0 0 1
+
+Vnum                #185 craft
+Skill               #15 2000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #29 1 0 1
+Component           #151 0 0 1
+
+Vnum                #187 assemble
+Skill               #122 2000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #29 1 0 1
+Component           #45 1 0 1
+Component           #167 0 0 1
+Component           #151 0 0 1
+
+Vnum                #188 craft
+Skill               #15 1000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #29 1 0 1
+
+Vnum                #192 assemble
+Skill               #122 2000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #29 1 0 1
+Component           #28 1 0 1
+Component           #32 1 0 1
+
+Vnum                #193 assemble
+Skill               #0 0
+Time                #0
+Hidden              #0
+Produces            #1
+
+Vnum                #194 craft
+Skill               #91 6000
+Time                #4
+Hidden              #0
+Produces            #2
+Component           #124 1 0 1
+Component           #151 0 0 1
+Component           #32 1 0 1
+
+Vnum                #197 sew
+Skill               #75 3500
+Time                #5
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 4
+Component           #1843 0 0 1
+Component           #10133 1 0 3
+Component           #10140 0 0 1
+
+Vnum                #1836 sew
+Skill               #75 4500
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10158 1 0 2
+Component           #10152 1 0 1
+Component           #1843 0 0 1
+Component           #10140 0 0 1
+Component           #10133 1 0 1
+
+Vnum                #1837 bake
+Skill               #121 3000
+Time                #4
+Hidden              #0
+Produces            #12
+Component           #35 1 0 1
+Component           #36 0 1 1
+Component           #37 0 0 1
+Component           #38 1 0 1
+Component           #39 1 0 1
+Byproduct           #38 1 1
+
+Vnum                #1838 make
+Skill               #74 4000
+Time                #4
+Hidden              #0
+Produces            #4
+Component           #47 0 1 1
+Component           #24 1 0 1
+Component           #10132 1 0 3
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+Component           #10152 1 0 1
+Component           #7 1 0 8
+
+Vnum                #1839 assemble
+Skill               #0 0
+Time                #0
+Hidden              #0
+Produces            #1
+
+Vnum                #1842 weave
+Skill               #76 1400
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #168 0 0 1
+Component           #10133 1 0 4
+
+Vnum                #1846 sew
+Skill               #75 2000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #10159 1 0 2
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10140 0 0 1
+
+Vnum                #1847 sew
+Skill               #75 2000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #10158 1 0 1
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10140 0 0 1
+
+Vnum                #1850 make
+Skill               #74 2500
+Time                #4
+Hidden              #0
+Produces            #10
+Component           #10139 1 0 1
+Component           #7 1 0 20
+Component           #10140 0 0 1
+Component           #144 0 0 1
+Component           #10153 1 0 1
+
+Vnum                #1858 make
+Skill               #74 4500
+Time                #4
+Hidden              #0
+Produces            #1
+Component           #7 1 0 3
+Component           #10132 1 0 2
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+Component           #24 1 0 1
+Byproduct           #166 1 1
+
+Vnum                #1860 make
+Skill               #74 2000
+Time                #5
+Hidden              #0
+Produces            #14
+Component           #24 1 0 1
+Component           #144 0 0 1
+Component           #10140 0 0 1
+Component           #10142 0 0 1
+Component           #10132 1 0 3
+Component           #7 1 0 14
+Component           #10153 1 0 1
+
+Vnum                #1865 make
+Skill               #74 4000
+Time                #4
+Hidden              #0
+Produces            #4
+Component           #47 0 1 1
+Component           #144 0 0 1
+Component           #10140 0 0 1
+Component           #10132 1 0 3
+Component           #10142 0 0 1
+Component           #24 1 0 1
+
+Vnum                #1869 make
+Skill               #124 3300
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #4495 1 0 1
+Component           #127 0 1 1
+Component           #167 0 0 1
+
+Vnum                #1870 make
+Skill               #74 4500
+Time                #4
+Hidden              #0
+Produces            #2
+Component           #24 1 0 1
+Component           #10132 1 0 4
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+Component           #47 0 1 1
+Component           #10154 1 0 1
+
+Vnum                #3305 sew
+Skill               #74 2000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #23 1 0 2
+Component           #10132 1 0 1
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+
+Vnum                #3307 sew
+Skill               #74 1000
+Time                #4
+Hidden              #0
+Produces            #10
+Component           #10139 1 0 1
+Component           #10132 1 0 1
+Component           #10140 0 0 1
+Component           #10142 0 0 1
+
+Vnum                #4813 fletch
+Skill               #91 2500
+Time                #2
+Hidden              #0
+Produces            #2
+Component           #29 1 0 1
+Component           #153 1 0 1
+Component           #48 1 0 2
+Component           #151 0 0 1
+
+Vnum                #10101 sew
+Skill               #75 4000
+Time                #4
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 5
+Component           #10152 1 0 1
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10140 0 0 1
+Byproduct           #14 1 1
+
+Vnum                #10103 sew
+Skill               #75 2000
+Time                #4
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 6
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10140 0 0 1
+
+Vnum                #10105 sew
+Skill               #74 1000
+Time                #5
+Hidden              #0
+Produces            #10
+Component           #10139 1 0 1
+Component           #10152 1 0 1
+Component           #10132 1 0 3
+Component           #10140 0 0 1
+Component           #10142 0 0 1
+
+Vnum                #10111 sew
+Skill               #75 1000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10149 1 0 2
+Component           #10140 0 0 1
+Byproduct           #9 1 1
+
+Vnum                #10112 sew
+Skill               #75 2000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10149 1 0 2
+Component           #10140 0 0 1
+Component           #10151 1 0 1
+Byproduct           #9 1 1
+
+Vnum                #10113 sew
+Skill               #75 2000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10149 1 0 2
+Component           #10140 0 0 1
+Component           #10153 1 0 1
+Byproduct           #9 1 1
+
+Vnum                #10114 sew
+Skill               #75 4000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 2
+Component           #10154 1 0 1
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10140 0 0 1
+
+Vnum                #10115 sew
+Skill               #75 4000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 2
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10140 0 0 1
+
+Vnum                #10116 sew
+Skill               #75 4000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 2
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10140 0 0 1
+
+Vnum                #10117 sew
+Skill               #75 4000
+Time                #4
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 5
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10140 0 0 1
+Byproduct           #14 1 1
+
+Vnum                #10118 sew
+Skill               #75 4000
+Time                #4
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 1
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10140 0 0 1
+Byproduct           #14 1 1
+
+Vnum                #10128 make
+Skill               #125 2500
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #10127 1 0 1
+Component           #10161 1 0 1
+
+Vnum                #10141 sew
+Skill               #74 2000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #10132 1 0 1
+Component           #10140 0 0 1
+Component           #10142 0 0 1
+Component           #25 1 0 1
+
+Vnum                #10143 sew
+Skill               #74 4000
+Time                #4
+Hidden              #0
+Produces            #1
+Component           #10132 1 0 1
+Component           #10140 0 0 1
+Component           #10142 0 0 1
+Component           #25 1 0 5
+
+Vnum                #10147 make
+Skill               #74 1500
+Time                #3
+Hidden              #0
+Produces            #10
+Component           #10139 1 0 1
+Component           #10132 1 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+Component           #7 1 0 20
+
+Vnum                #10148 make
+Skill               #74 2000
+Time                #3
+Hidden              #0
+Produces            #5
+Component           #7 1 0 10
+Component           #10139 1 0 1
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+
+Vnum                #10156 thatch
+Skill               #76 500
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #126 1 0 1
+
+Vnum                #10157 make
+Skill               #74 4000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #4824 1 0 3
+Component           #10132 1 0 1
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+
+Vnum                #10350 sew
+Skill               #75 5000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 5
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10140 0 0 1
+Byproduct           #10302 1 2
+
+Vnum                #10351 sew
+Skill               #75 5000
+Time                #0
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 5
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10140 0 0 1
+Byproduct           #10302 1 2
+
+Vnum                #10352 sew
+Skill               #75 5000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 5
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10140 0 0 1
+Byproduct           #10302 1 2
+
+Vnum                #10353 sew
+Skill               #75 5000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 5
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10140 0 0 1
+Byproduct           #10302 1 2
+
+Vnum                #10354 sew
+Skill               #75 5000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 5
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10140 0 0 1
+Byproduct           #10302 1 2
+
+Vnum                #10355 sew
+Skill               #75 5000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 5
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10140 0 0 1
+Byproduct           #10302 1 2
+
+Vnum                #10356 sew
+Skill               #75 5000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 5
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10140 0 0 1
+Byproduct           #10302 1 2
+
+Vnum                #10360 sew
+Skill               #75 5000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10158 1 0 3
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10140 1 0 1
+Component           #10303 1 0 1
+Byproduct           #10301 2 1
+
+Vnum                #10361 sew
+Skill               #75 5000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10158 1 0 4
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10140 0 0 1
+Byproduct           #10301 2 1
+
+Vnum                #10362 sew
+Skill               #75 5000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10159 1 0 3
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10303 1 0 1
+Component           #10140 0 0 1
+Byproduct           #10301 1 2
+
+Vnum                #10363 sew
+Skill               #75 5000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10159 1 0 4
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10303 1 0 1
+Component           #10140 0 0 1
+Byproduct           #10301 1 2
+
+Vnum                #10364 sew
+Skill               #75 2500
+Time                #1
+Hidden              #0
+Produces            #1
+Component           #10158 1 0 1
+Component           #1843 0 0 1
+Component           #10303 1 0 1
+Component           #10140 0 0 1
+Byproduct           #10301 2 1
+
+Vnum                #10365 sew
+Skill               #75 3500
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #10159 1 0 1
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10140 0 0 1
+Byproduct           #10301 2 1
+
+Vnum                #10366 sew
+Skill               #75 3000
+Time                #1
+Hidden              #0
+Produces            #1
+Component           #10158 1 0 1
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10140 0 0 1
+Byproduct           #10301 2 1
+
+Vnum                #10367 sew
+Skill               #75 2500
+Time                #1
+Hidden              #0
+Produces            #1
+Component           #10158 1 0 1
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10140 0 0 1
+Component           #10304 1 0 1
+Byproduct           #10301 2 1
+
+Vnum                #10370 sew
+Skill               #75 7500
+Time                #4
+Hidden              #0
+Produces            #1
+Component           #10158 1 0 1
+Component           #10149 1 0 1
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10140 0 0 1
+Component           #10304 1 0 1
+Component           #10301 1 0 3
+
+Vnum                #10371 sew
+Skill               #75 7500
+Time                #4
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 1
+Component           #1843 0 0 1
+Component           #10133 1 0 1
+Component           #10140 0 0 1
+Component           #10302 1 0 3
+Component           #10304 1 0 1
+
+Vnum                #10372 sew
+Skill               #75 2500
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 2
+Component           #10133 1 0 1
+Component           #1843 0 0 1
+Component           #10140 0 0 1
+Byproduct           #10302 2 1
+
+Vnum                #10373 sew
+Skill               #75 2500
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 2
+Component           #10133 1 0 1
+Component           #1843 0 0 1
+Component           #10140 0 0 1
+Byproduct           #10302 2 1
+
+Vnum                #10374 sew
+Skill               #75 2500
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 2
+Component           #10133 1 0 1
+Component           #1843 0 0 1
+Component           #10140 0 0 1
+Byproduct           #10302 2 1
+
+Vnum                #10400 sew
+Skill               #75 5000
+Time                #3
+Hidden              #0
+Produces            #1
+Component           #10149 1 0 5
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10140 0 0 1
+
+Vnum                #10501 assemble
+Skill               #74 5500
+Time                #5
+Hidden              #0
+Produces            #1
+Component           #10139 1 0 1
+Component           #123 1 0 1
+Component           #10142 0 0 1
+Component           #10140 0 0 1
+Component           #144 0 0 1
+
+Vnum                #10502 forge
+Skill               #16 7500
+Time                #5
+Hidden              #0
+Produces            #1
+Component           #10503 0 0 1
+Component           #10504 1 1 20
+Component           #10505 0 0 1
+Component           #10500 0 1 1
+Component           #10501 0 1 1
+Component           #167 0 0 1
+
+Vnum                #10503 forge
+Skill               #16 3000
+Time                #2
+Hidden              #0
+Produces            #1
+Component           #167 0 0 1
+Component           #10500 0 1 1
+Component           #10501 0 1 1
+Component           #10502 0 1 1
+Component           #10503 0 0 1
+Component           #10504 1 1 2
+Component           #10505 0 0 1
+
+Vnum                #10504 smelt
+Skill               #126 1000
+Time                #1
+Hidden              #0
+Produces            #1
+Component           #4485 1 0 3
+Component           #10500 0 1 1
+Component           #10501 0 1 1
+
+Vnum                #10505 assemble
+Skill               #16 1000
+Time                #1
+Hidden              #0
+Produces            #1
+Component           #10506 1 0 1
+Component           #10507 1 0 1
+
+Vnum                #10506 forge
+Skill               #16 1500
+Time                #1
+Hidden              #0
+Produces            #1
+Component           #167 0 0 1
+Component           #10500 0 1 1
+Component           #10501 0 1 1
+Component           #10502 0 1 1
+Component           #10503 0 0 1
+Component           #10504 1 1 2
+Component           #10505 0 0 1
+
+Vnum                #10507 craft
+Skill               #90 1000
+Time                #2
+Hidden              #0
+Produces            #4
+Component           #151 0 0 1
+Component           #123 1 0 1
+
+Vnum                #10508 sew
+Skill               #75 3000
+Time                #5
+Hidden              #0
+Produces            #1
+Component           #1843 0 0 1
+Component           #10133 1 0 2
+Component           #10149 1 0 6
+Component           #153 1 0 50
+Component           #10140 0 0 1

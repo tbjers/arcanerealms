@@ -1,0 +1,191 @@
+# CircleMUD 3.0
+# Makefile.in - this file is processed by configure to create the Makefile
+# Modified and extended by Torgny Bjers <artovil@arcanerealms.org> - 20020914
+# first based on the Makefile of CircleMUD version 3.0 bpl 17
+
+# C compiler to use
+CC = @CC@
+EXE = circle
+CTAGS = ctags
+PERL = perl
+
+# Path to cxref utility
+CXREF = cxref
+
+# Any special flags you want to pass to the compiler
+MYFLAGS = @MYFLAGS@
+MYFLAGS += -Winline
+MYFLAGS += -Wuninitialized
+MYFLAGS += -Waggregate-return
+MYFLAGS += -Wswitch
+#MYFLAGS += -Werror
+MYFLAGS += -Wunused
+MYFLAGS += -Wbad-function-cast
+MYFLAGS += -Wcast-align
+#MYFLAGS += -Wcast-qual
+MYFLAGS += -Wchar-subscripts
+MYFLAGS += -Wcomment
+MYFLAGS += -Wformat
+#MYFLAGS += -Wformat-nonliteral
+#MYFLAGS += -Wformat-security
+MYFLAGS += -Wimplicit-function-dec
+MYFLAGS += -Wimplicit-int
+MYFLAGS += -Wimport
+MYFLAGS += -Wmain
+MYFLAGS += -Wmissing-braces
+
+#ENABLE THE FOLLOWING TWO VARIABLES FOR PROTOTYPES CHECK,
+#cannot be enabled all the time since it creates warnings
+#in comm.c's includes.
+#MYFLAGS += -Wmissing-declarations
+#MYFLAGS += -Wmissing-prototypes
+
+#MYFLAGS += -Wmultichar
+MYFLAGS += -Wnested-externs
+MYFLAGS += -Wparentheses
+#MYFLAGS += -Wpointer-arith
+#MYFLAGS += -Wsign-compare
+#MYFLAGS += -Wunknown-pragmas
+MYFLAGS += -Wstrict-prototypes
+MYFLAGS += -Wtrigraphs
+#MYFLAGS += -Wwrite-strings
+#MYFLAGS += -Wundef
+
+#MYFLAGS += -Wtraditional
+#MYFLAGS += -W
+#MYFLAGS += -Wconversion
+#MYFLAGS += -Wredundant-decls
+#MYFLAGS += -Wshadow
+
+# GCC 3.0
+#MYFLAGS += -Wmissing-noreturn
+#MYFLAGS += -Wdisabled-optimization
+#MYFLAGS += -Wpadded
+#MYFLAGS += -Wpacked
+#MYFLAGS += -Wunreachable-code
+#MYFLAGS += -Wunused-value
+#MYFLAGS += -Wunused-variable
+#MYFLAGS += -Wunused-parameter
+#MYFLAGS += -Wunused-label
+#MYFLAGS += -Wunused-function
+#MYFLAGS += -Wmissing-format-attrib
+#MYFLAGS += -Wsequence-point
+#MYFLAGS += -Wno-system-headers
+#MYFLAGS += -Wfloat-equal
+
+#flags for profiling (see hacker.doc for more information)
+PROFILE = 
+#PROFILE += -I/usr/lib/perl5/i386-linux/CORE
+
+DB_INCLUDES = @DB_INCLUDES@
+
+##############################################################################
+# Do Not Modify Anything Below This Line (unless you know what you're doing) #
+##############################################################################
+
+BINDIR = ../bin
+GAMEBINDIR = /home/httpd/vhosts/arcanerealms.org/mud/bin
+BUILDINGBINDIR = /home/httpd/vhosts/arcanerealms.org/mud/building/bin
+
+CFLAGS = @CFLAGS@ $(MYFLAGS) $(DB_INCLUDES) $(PROFILE)
+
+LIBS = @LIBS@ @DB_LIBS@ @CRYPTLIB@ @NETLIB@
+#LIBS += `perl -MExtUtils::Embed -e ccopts -e ldopts`
+
+# Source files
+SRC_FILES := $(wildcard *.c)
+
+# Object files 
+OBJ_DIR=obj
+OBJ_FILES := $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
+
+# Include files
+INC_FILES := $(wildcard h/*.h)
+
+default: all
+
+all: .accepted
+	$(MAKE) me
+#	$(MAKE) building
+#	$(MAKE) game
+
+.accepted:
+	@./licheck @MORE@
+
+tags:	$(SRC_FILES) $(INC_FILES)
+	$(CTAGS) $(SRC_FILES) $(INC_FILES)
+
+me:
+	$(MAKE) $(BINDIR)/$(EXE)
+$(BINDIR)/$(EXE): $(OBJ_FILES)
+	$(CC) -o $(BINDIR)/$(EXE) $(PROFILE) $(OBJ_FILES) $(LIBS)
+
+building:
+	$(MAKE) $(BUILDINGBINDIR)/$(EXE)
+$(BUILDINGBINDIR)/$(EXE): $(OBJ_FILES)
+	$(CC) -o $(BUILDINGBINDIR)/$(EXE) $(PROFILE) $(OBJ_FILES) $(LIBS)
+
+game:
+	$(MAKE) $(GAMEBINDIR)/$(EXE)
+$(GAMEBINDIR)/$(EXE): $(OBJ_FILES)
+	$(CC) -o $(GAMEBINDIR)/$(EXE) $(PROFILE) $(OBJ_FILES) $(LIBS)
+
+$(OBJ_DIR)/%.o: %.c
+	@echo "Compiling $<"
+	@$(CC) $(CFLAGS) -c $(PROFILE) $< -o $@
+
+distclean: clean tidy
+	rm -f ../config.* .depend conf.h Makefile
+
+clean: tidy
+	rm -f $(OBJ_FILES)
+
+tidy:
+	rm -f *~ *orig *bak *rej .#*
+
+ref:
+#
+# Create the cross reference files
+# Note, this is not meant to be used unless you've installed cxref...
+#
+	@for file in $(SRC_FILES) ; do \
+	  echo Cross referencing $$file ; \
+	  $(CXREF) -D__CXREF__ -xref -Odoc $(DB_INCLUDES) -Ncircle $$file ; \
+	done
+#
+# Create the source files using cxref
+#
+	@for file in $(SRC_FILES) ; do \
+	   echo Documenting $$file ; \
+	   ( cd . ; $(CXREF) -D__CXREF__ $(DB_INCLUDES) -warn-xref -xref -Odoc -Ncircle -html $$file ) ; \
+	   rm -f $(DOCS) ; \
+	done
+#
+# Create the index using cxref
+#
+	@echo Indexing
+	@( cd . ; $(CXREF) -D__CXREF__ -index-all -Odoc -Ncircle -html )
+	@rm -f $(DOCS)
+#
+# Make html files for the .h files
+#
+	@echo Creating .h.html files...
+	@for file in *.h ; do \
+	  echo $$file ; \
+	  cat /home/httpd/vhosts/arcanerealms.org/public_html/Admin/source/htmlh-head $$file /home/a/arcanere/www/Admin/source/htmlh-tail > doc/$$file.html ; \
+	done
+# Copy over to the html directory
+	@echo Copying cross reference files...
+	@cp doc/*.html /home/httpd/vhosts/arcanerealms.org/public_html/Admin/source/cxref
+	@chmod 644 /home/httpd/vhosts/arcanerealms.org/public_html/Admin/source/cxref/*.html
+	@rm doc/*
+
+# Dependencies for the object files (automagically generated with
+# gcc -MM)
+
+depend deps .depend:
+	@echo Generating dependency file.
+	@$(CC) -MM -Ih $(DB_INCLUDES) $(SRC_FILES) > .depend
+	@$(PERL) -i -p -e 's/([^ ]+):/$(subst /,\/,$(OBJ_DIR))\/\1\:/g' .depend
+
+-include .depend

@@ -1,0 +1,58 @@
+3
+#0
+!RESERVED!~
+~
+~
+~
+~
+~
+~
+-1 0 0
+-1 0 0
+-1 0 0
+0 0 0 0
+0 0 0 0
+0 0 0 0 0
+$
+#1
+Armor~
+Creann's Arcane Aura of Protection~
+$n casts a spell of armor on you.~
+Your aura of armor disperses.~
+$n plunges the magical flux and begins the intricate binding pattern of a
+shield of armor.    
+~
+$n makes some quaint gestures.
+~
+$n begins to weave an Arcane Aura of Protection around $N.
+~
+3000 1 0
+1201 0 1
+-1 0 0
+1202 0 0
+-1 0 0
+1204 0 1
+-1 0 0
+15 30 7 106
+2 0 2 1
+2 2 3 1 1
+$
+#2
+Earth Missile~
+Earth Missile~
+$n creates a missile of Earth, and hurls straight into YOUR face!~
+~
+Nothing.
+Your Earth Missile sends $N staggering with it`s impact!
+~
+Nothing.
+~
+Nothing.
+~
+-1 0 0
+-1 0 0
+-1 0 0
+25 1000 6 17
+1 1 1 1
+3 8 6 0 1
+$
