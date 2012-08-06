@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 05, 2012 at 11:20 PM
+-- Generation Time: Aug 06, 2012 at 04:09 AM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.3
 
@@ -69,6 +69,26 @@ CREATE TABLE IF NOT EXISTS `cultures_list` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `events`
+--
+
+DROP TABLE IF EXISTS `events`;
+CREATE TABLE IF NOT EXISTS `events` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `short_desc` text NOT NULL,
+  `long_desc` text NOT NULL,
+  `startdate` bigint(20) NOT NULL,
+  `enddate` bigint(20) NOT NULL,
+  `assigned` varchar(255) NOT NULL,
+  `active` tinyint(1) unsigned NOT NULL,
+  `approved` tinyint(1) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `guild_index`
 --
 
@@ -119,13 +139,13 @@ CREATE TABLE IF NOT EXISTS `help_index` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `menutitle` varchar(255) NOT NULL,
-  `f4` varchar(255) NOT NULL,
+  `brief` varchar(255) NOT NULL,
   `syntax` varchar(255) NOT NULL,
   `modified` bigint(20) unsigned NOT NULL,
   `category` int(11) unsigned NOT NULL,
   `imm_info` varchar(255) NOT NULL,
   `see_also` varchar(255) NOT NULL,
-  `text` varchar(255) NOT NULL,
+  `body` varchar(255) NOT NULL,
   `rights` varchar(255) NOT NULL,
   `keyword` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
@@ -167,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `MCL` (
   `reserved` enum('No','Yes') NOT NULL DEFAULT 'No',
   PRIMARY KEY (`id`),
   UNIQUE KEY `command` (`command`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=245 ;
 
 -- --------------------------------------------------------
 
@@ -212,10 +232,10 @@ CREATE TABLE IF NOT EXISTS `mob_index` (
   `essence` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `unknown34` varchar(255) NOT NULL DEFAULT '0',
   `race` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `val0` int(10) unsigned NOT NULL DEFAULT '0',
   `val1` int(10) unsigned NOT NULL DEFAULT '0',
   `val2` int(10) unsigned NOT NULL DEFAULT '0',
   `val3` int(10) unsigned NOT NULL DEFAULT '0',
-  `val4` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`znum`,`vnum`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -287,10 +307,10 @@ CREATE TABLE IF NOT EXISTS `obj_index` (
   `extra_flags` varchar(255) NOT NULL DEFAULT '0',
   `wear_flags` varchar(255) NOT NULL DEFAULT '0',
   `obj_flags` varchar(255) NOT NULL DEFAULT '0',
+  `val0` int(11) NOT NULL DEFAULT '0',
   `val1` int(11) NOT NULL DEFAULT '0',
   `val2` int(11) NOT NULL DEFAULT '0',
   `val3` int(11) NOT NULL DEFAULT '0',
-  `val4` int(11) NOT NULL DEFAULT '0',
   `weight` int(11) unsigned NOT NULL DEFAULT '0',
   `cost` int(11) unsigned NOT NULL DEFAULT '0',
   `rent` int(11) unsigned NOT NULL DEFAULT '0',
@@ -299,7 +319,8 @@ CREATE TABLE IF NOT EXISTS `obj_index` (
   `size` int(11) unsigned NOT NULL DEFAULT '0',
   `color` int(11) unsigned NOT NULL DEFAULT '0',
   `resource` int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`znum`,`vnum`)
+  PRIMARY KEY (`znum`,`vnum`),
+  FULLTEXT KEY `action_description` (`action_description`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -602,6 +623,43 @@ CREATE TABLE IF NOT EXISTS `races_list` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rent_objects`
+--
+
+DROP TABLE IF EXISTS `rent_objects`;
+CREATE TABLE IF NOT EXISTS `rent_objects` (
+  `obj_order` int(10) unsigned NOT NULL,
+  `location` int(10) unsigned NOT NULL,
+  `vnum` int(10) unsigned NOT NULL,
+  `unique_id` int(10) unsigned NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `short_description` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `action_description` text NOT NULL,
+  `type` int(10) unsigned NOT NULL,
+  `extra_flags` varchar(255) NOT NULL,
+  `wear_flags` varchar(255) NOT NULL,
+  `flags` bigint(20) unsigned NOT NULL,
+  `val0` int(10) unsigned NOT NULL,
+  `val1` int(10) unsigned NOT NULL,
+  `val2` int(10) unsigned NOT NULL,
+  `val3` int(10) unsigned NOT NULL,
+  `weight` int(10) unsigned NOT NULL,
+  `cost` int(10) unsigned NOT NULL,
+  `rent` int(10) unsigned NOT NULL,
+  `size` int(10) unsigned NOT NULL,
+  `color` int(10) unsigned NOT NULL,
+  `proto_number` int(10) unsigned NOT NULL,
+  `resource` int(10) unsigned NOT NULL,
+  `player_id` bigint(20) unsigned NOT NULL,
+  `room_id` bigint(20) unsigned NOT NULL,
+  UNIQUE KEY `unique_id` (`unique_id`),
+  KEY `player_id` (`obj_order`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rent_players`
 --
 
@@ -777,6 +835,27 @@ CREATE TABLE IF NOT EXISTS `trg_index` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `usage_history`
+--
+
+DROP TABLE IF EXISTS `usage_history`;
+CREATE TABLE IF NOT EXISTS `usage_history` (
+  `Sockets` int(10) unsigned NOT NULL,
+  `Players` int(10) unsigned NOT NULL,
+  `IC` int(10) unsigned NOT NULL,
+  `UTCDate` bigint(20) unsigned NOT NULL,
+  `UserTime` bigint(20) unsigned NOT NULL,
+  `SysTime` bigint(20) unsigned NOT NULL,
+  `MinFaults` int(10) unsigned NOT NULL,
+  `MajFaults` int(10) unsigned NOT NULL,
+  `LastReboot` bigint(20) unsigned NOT NULL,
+  `LastCopyover` bigint(20) unsigned NOT NULL,
+  `Copyovers` tinyint(3) unsigned NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `wld_exits`
 --
 
@@ -822,16 +901,16 @@ CREATE TABLE IF NOT EXISTS `wld_index` (
   `vnum` bigint(20) unsigned NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL DEFAULT '',
   `description` text NOT NULL,
-  `room_flags` varchar(255) NOT NULL DEFAULT '0',
-  `sector_type` int(10) unsigned NOT NULL DEFAULT '0',
-  `spec` int(10) unsigned NOT NULL DEFAULT '0',
+  `flags` varchar(255) NOT NULL DEFAULT '0',
+  `sectortype` int(10) unsigned NOT NULL DEFAULT '0',
+  `specproc` int(10) unsigned NOT NULL DEFAULT '0',
   `magic_flux` int(10) unsigned NOT NULL DEFAULT '0',
-  `room_resources` int(10) unsigned NOT NULL DEFAULT '0',
-  `resource_ore` int(10) unsigned NOT NULL DEFAULT '0',
-  `resource_gems` int(10) unsigned NOT NULL DEFAULT '0',
-  `resource_wood` int(10) unsigned NOT NULL DEFAULT '0',
-  `resource_stone` int(10) unsigned NOT NULL DEFAULT '0',
-  `resource_fabric` int(10) unsigned NOT NULL DEFAULT '0',
+  `resource_flags` int(10) unsigned NOT NULL DEFAULT '0',
+  `res_val0` int(10) unsigned NOT NULL DEFAULT '0',
+  `res_val1` int(10) unsigned NOT NULL DEFAULT '0',
+  `res_val2` int(10) unsigned NOT NULL DEFAULT '0',
+  `res_val3` int(10) unsigned NOT NULL DEFAULT '0',
+  `res_val4` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`znum`,`vnum`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
