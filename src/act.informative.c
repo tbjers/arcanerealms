@@ -2489,21 +2489,22 @@ void sort_commands(void)
 		cmd_sort_info[a].sort_pos = a;
 		cmd_sort_info[a].is_social = (complete_cmd_info[a].command_pointer == do_action);
 	}
-
 	/* the infernal special case */
 	cmd_sort_info[find_command("insult")].is_social = TRUE;
 
 	/* Sort.  'a' starts at 1, not 0, to remove 'RESERVED' */
-	for (a = 1; a < num_of_cmds - 1; a++)
-		for (b = a + 1; b < num_of_cmds; b++)
+	for (a = 1; a < num_of_cmds - 1; a++) {
+		for (b = a + 1; b < num_of_cmds; b++) {
 			/* if (strcmp(cmd_info[cmd_sort_info[a].sort_pos].command,
 								 cmd_info[cmd_sort_info[b].sort_pos].command) > 0) { */
 			if (strcmp(complete_cmd_info[cmd_sort_info[a].sort_pos].command,
-			complete_cmd_info[cmd_sort_info[b].sort_pos].command) > 0) {
+					complete_cmd_info[cmd_sort_info[b].sort_pos].command) > 0) {
 				tmp = cmd_sort_info[a].sort_pos;
 				cmd_sort_info[a].sort_pos = cmd_sort_info[b].sort_pos;
 				cmd_sort_info[b].sort_pos = tmp;
 			}
+		}
+	}
 }
 
 

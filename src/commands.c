@@ -211,7 +211,6 @@ void boot_command_list(void)
 	for(curr_com = 1; curr_com <= top_of_commandt; curr_com++)
 	{
 		row = mysql_fetch_row(result);
-		mlog("   Command: %s, Enabled: %d, Reserved: %d", row[0], atoi(row[7]), atoi(row[8]));
 		fieldlength = mysql_fetch_lengths(result);
 		cmd_info[curr_com].command = str_dup(row[0]);
 		cmd_info[curr_com].sort_as = str_dup(row[1]);
