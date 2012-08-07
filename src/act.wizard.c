@@ -3852,6 +3852,8 @@ int newbie_equip(struct char_data *ch)
 	struct obj_data *obj;
 	int item, where;
 
+	return(1);
+
 	int give_obj[]    = { 103, 104, 120, -1 }; /* Global objects */
 	int magi_obj[]    = { 110, -1 };
 	int thief_obj[]   = { 110, 113, -1 };

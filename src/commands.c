@@ -1,14 +1,14 @@
-/* ************************************************************************
-*	File: commands.c																		  Part of CircleMUD *
-*	Usage: functions related to the loading and saving of commands in				*
-*	conjunction with MySQL and interpreter.c																*
-*																																					*
-*	All rights reserved.  See license.doc for complete information.					*
-*																																					*
-*	Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University	*
-*	Copyright (C) 2002 by Arcane Realms MUD, created by Catherine Gore			*
-*	CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.								*
-************************************************************************ */
+/* **************************************************************************
+ *	File: commands.c                                     Part of CircleMUD  *
+ *	Usage: functions related to the loading and saving of commands in       *
+ *	conjunction with MySQL and interpreter.c                                *
+ *                                                                          *
+ *	All rights reserved.  See license.doc for complete information.         *
+ *                                                                          *
+ *	Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University  *
+ *	Copyright (C) 2002 by Arcane Realms MUD, created by Catherine Gore      *
+ *	CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.                *
+ ************************************************************************** */
 
 #define	__COMMANDS_C__
 
@@ -26,7 +26,6 @@
 #include "spells.h"
 #include "skills.h"
 #include "commands.h"
-
 
 /* external variables */
 extern int top_of_socialt;
@@ -108,8 +107,7 @@ struct command_list_info command_list[] = {
 /* this function adds in the loaded socials and assigns them a command # */
 void create_command_list(void)
 {
-	int i, j, k;
-	struct social_messg temp;
+	int i, k;
 
 	/* free up old command list */
 	if (complete_cmd_info) {
@@ -117,59 +115,31 @@ void create_command_list(void)
 		complete_cmd_info = NULL;
 	}
 
-	/* recheck the sort on the socials */
-	for (j = 0; j < top_of_socialt; j++) {
-		k = j;
-		for (i = j + 1; i <= top_of_socialt; i++)
-			if (str_cmp(soc_mess_list[i].sort_as, soc_mess_list[k].sort_as) < 0)
-				k = i;
-		if (j != k) {
-			temp = soc_mess_list[j];
-			soc_mess_list[j] = soc_mess_list[k];
-			soc_mess_list[k] = temp;
-		}
-	}
-
-	CREATE(complete_cmd_info, struct master_command_info, top_of_socialt + top_of_commandt + 3);
+	CREATE(complete_cmd_info, struct master_command_info, top_of_commandt + 2);
 
 	/* this loop sorts the socials and commands together into one big list */
 	i = 0;
-	j = 0;
 	k = 0;
-	while ((i <= top_of_commandt) && (j <= top_of_socialt))  {
-		if ((i < num_reserved_cmds) || (j > top_of_socialt) || 
-	(str_cmp(cmd_info[i].sort_as, soc_mess_list[j].sort_as) < 1)) {
-			complete_cmd_info[k].command					= cmd_info[i].command;
-			complete_cmd_info[k].sort_as					= cmd_info[i].sort_as;
-			complete_cmd_info[k].minimum_position = cmd_info[i].minimum_position;
-			complete_cmd_info[k].command_pointer	= command_list[cmd_info[i].command_num].command;
-			complete_cmd_info[k].rights						= cmd_info[i].rights;
-			complete_cmd_info[k].subcmd						= cmd_info[i].subcmd;
-			complete_cmd_info[k].copyover					= cmd_info[i].copyover;
-			complete_cmd_info[k].enabled					= cmd_info[i].enabled;
-			complete_cmd_info[k++].reserved				= cmd_info[i++].reserved;
-		} else {
-			soc_mess_list[j].act_nr		= k;
-			complete_cmd_info[k].command					= soc_mess_list[j].command;
-			complete_cmd_info[k].sort_as					= soc_mess_list[j].sort_as;
-			complete_cmd_info[k].minimum_position	= soc_mess_list[j++].min_char_position;
-			complete_cmd_info[k].command_pointer	= do_action;
-			complete_cmd_info[k].rights						= RIGHTS_MEMBER;
-			complete_cmd_info[k].subcmd						= 0;
-			complete_cmd_info[k].copyover					= 1;
-			complete_cmd_info[k].enabled					= 1;
-			complete_cmd_info[k++].reserved				= 0;
-		}
+	while (i <= top_of_commandt) {
+		complete_cmd_info[k].command			= cmd_info[i].command;
+		complete_cmd_info[k].sort_as			= cmd_info[i].sort_as;
+		complete_cmd_info[k].minimum_position	= cmd_info[i].minimum_position;
+		complete_cmd_info[k].command_pointer	= command_list[cmd_info[i].command_num].command;
+		complete_cmd_info[k].rights				= cmd_info[i].rights;
+		complete_cmd_info[k].subcmd				= cmd_info[i].subcmd;
+		complete_cmd_info[k].copyover			= cmd_info[i].copyover;
+		complete_cmd_info[k].enabled			= cmd_info[i].enabled;
+		complete_cmd_info[k++].reserved			= cmd_info[i++].reserved;
 	}
-	complete_cmd_info[k].command							= str_dup("\n");
-	complete_cmd_info[k].sort_as							= str_dup("zzzzzzz");
+	complete_cmd_info[k].command					= str_dup("\n");
+	complete_cmd_info[k].sort_as					= str_dup("zzzzzzzzzzz");
 	complete_cmd_info[k].minimum_position			= 0;
 	complete_cmd_info[k].command_pointer			= 0;
-	complete_cmd_info[k].rights								= RIGHTS_MEMBER;
-	complete_cmd_info[k].subcmd								= 0;
-	complete_cmd_info[k].copyover							= 1;
-	complete_cmd_info[k].enabled							= 1;
-	complete_cmd_info[k].reserved							= 0;
+	complete_cmd_info[k].rights						= RIGHTS_MEMBER;
+	complete_cmd_info[k].subcmd						= 0;
+	complete_cmd_info[k].copyover					= 1;
+	complete_cmd_info[k].enabled					= 1;
+	complete_cmd_info[k].reserved					= 0;
 	mlog("Command info rebuilt, %d total commands.", k);
 }
 
@@ -194,7 +164,7 @@ void boot_command_list(void)
 	top_of_commandt = mysql_num_rows(result);
 	mlog("   %d commands loaded.", top_of_commandt);
 
-	CREATE(cmd_info, struct command_info, top_of_commandt + 2);
+	CREATE(cmd_info, struct command_info, top_of_commandt + 1);
 
 	/* The first command in the list (0) should be reserved. */
 	cmd_info[0].command = str_dup("RESERVED");
@@ -212,6 +182,7 @@ void boot_command_list(void)
 	{
 		row = mysql_fetch_row(result);
 		fieldlength = mysql_fetch_lengths(result);
+		mlog("%10s :: %s", row[1], row[0]);
 		cmd_info[curr_com].command = str_dup(row[0]);
 		cmd_info[curr_com].sort_as = str_dup(row[1]);
 		cmd_info[curr_com].minimum_position = atoi(row[2]);
