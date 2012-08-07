@@ -131,15 +131,15 @@ void create_command_list(void)
 		complete_cmd_info[k].enabled			= cmd_info[i].enabled;
 		complete_cmd_info[k++].reserved			= cmd_info[i++].reserved;
 	}
-	complete_cmd_info[k].command					= str_dup("\n");
-	complete_cmd_info[k].sort_as					= str_dup("zzzzzzzzzzz");
-	complete_cmd_info[k].minimum_position			= 0;
-	complete_cmd_info[k].command_pointer			= 0;
-	complete_cmd_info[k].rights						= RIGHTS_MEMBER;
-	complete_cmd_info[k].subcmd						= 0;
-	complete_cmd_info[k].copyover					= 1;
-	complete_cmd_info[k].enabled					= 1;
-	complete_cmd_info[k].reserved					= 0;
+	complete_cmd_info[k].command				= str_dup("\n");
+	complete_cmd_info[k].sort_as				= str_dup("zzzzzzzzzzz");
+	complete_cmd_info[k].minimum_position		= 0;
+	complete_cmd_info[k].command_pointer		= 0;
+	complete_cmd_info[k].rights					= RIGHTS_MEMBER;
+	complete_cmd_info[k].subcmd					= 0;
+	complete_cmd_info[k].copyover				= 1;
+	complete_cmd_info[k].enabled				= 1;
+	complete_cmd_info[k].reserved				= 0;
 	mlog("Command info rebuilt, %d total commands.", k);
 }
 
@@ -232,6 +232,9 @@ void save_commands(void)
 	for (i = 0; *complete_cmd_info[i].command != '\n'; i++) {
 
 		if (complete_cmd_info[i].command_pointer == do_action)
+			continue;
+		
+		if (complete_cmd_info[i].command == "RESERVED")
 			continue;
 		
 		SQL_MALLOC(complete_cmd_info[i].command, command);
