@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 06, 2012 at 04:09 AM
+-- Generation Time: Aug 06, 2012 at 09:42 PM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.3
 
@@ -89,18 +89,65 @@ CREATE TABLE IF NOT EXISTS `events` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `guild_equipment`
+--
+
+DROP TABLE IF EXISTS `guild_equipment`;
+CREATE TABLE IF NOT EXISTS `guild_equipment` (
+  `guildie` bigint(20) unsigned NOT NULL,
+  `vnum` bigint(20) unsigned NOT NULL,
+  `guild` bigint(20) unsigned NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `guild_guildies`
+--
+
+DROP TABLE IF EXISTS `guild_guildies`;
+CREATE TABLE IF NOT EXISTS `guild_guildies` (
+  `guild` bigint(20) unsigned NOT NULL,
+  `idnum` bigint(20) unsigned NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `rank_num` int(10) unsigned NOT NULL,
+  `subrank` varchar(255) NOT NULL,
+  `perm` bigint(20) unsigned NOT NULL,
+  `status` int(10) unsigned NOT NULL,
+  `deposited` int(10) unsigned NOT NULL,
+  `withdrew` int(10) unsigned NOT NULL,
+  `sponsors` int(10) unsigned NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `guild_help`
+--
+
+DROP TABLE IF EXISTS `guild_help`;
+CREATE TABLE IF NOT EXISTS `guild_help` (
+  `guild` bigint(20) unsigned NOT NULL,
+  `keyword` varchar(255) NOT NULL,
+  `entry` text NOT NULL,
+  PRIMARY KEY (`guild`,`keyword`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `guild_index`
 --
 
 DROP TABLE IF EXISTS `guild_index`;
 CREATE TABLE IF NOT EXISTS `guild_index` (
-  `name` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `gossip_name` varchar(255) NOT NULL,
   `gl_title` varchar(255) NOT NULL,
-  `guildie_titles` text NOT NULL,
+  `guildie_pretitle` varchar(255) NOT NULL,
   `type` int(10) unsigned NOT NULL DEFAULT '0',
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `flags` varchar(255) NOT NULL DEFAULT '0',
+  `gflags` varchar(255) NOT NULL DEFAULT '0',
   `guildwalk_room` int(10) unsigned NOT NULL DEFAULT '0',
   `gold` int(10) unsigned NOT NULL DEFAULT '0',
   `description` text NOT NULL,
@@ -110,7 +157,62 @@ CREATE TABLE IF NOT EXISTS `guild_index` (
   `gchan_color` varchar(255) NOT NULL,
   `gchan_type` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `guild_ranks`
+--
+
+DROP TABLE IF EXISTS `guild_ranks`;
+CREATE TABLE IF NOT EXISTS `guild_ranks` (
+  `guild` bigint(20) unsigned NOT NULL,
+  `num` int(10) unsigned NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`guild`,`num`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `guild_skills`
+--
+
+DROP TABLE IF EXISTS `guild_skills`;
+CREATE TABLE IF NOT EXISTS `guild_skills` (
+  `guild` bigint(20) unsigned NOT NULL,
+  `skill` int(10) unsigned NOT NULL,
+  `maximum_set` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`guild`,`skill`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `guild_sponsorer`
+--
+
+DROP TABLE IF EXISTS `guild_sponsorer`;
+CREATE TABLE IF NOT EXISTS `guild_sponsorer` (
+  `guildie` bigint(20) unsigned NOT NULL,
+  `idnum` bigint(20) unsigned NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`guildie`,`idnum`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `guild_zones`
+--
+
+DROP TABLE IF EXISTS `guild_zones`;
+CREATE TABLE IF NOT EXISTS `guild_zones` (
+  `guild` bigint(20) unsigned NOT NULL,
+  `znum` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`guild`,`znum`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -155,6 +257,30 @@ CREATE TABLE IF NOT EXISTS `help_index` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `house_index`
+--
+
+DROP TABLE IF EXISTS `house_index`;
+CREATE TABLE IF NOT EXISTS `house_index` (
+  `vnum` bigint(20) unsigned NOT NULL,
+  `atrium` bigint(20) unsigned NOT NULL,
+  `exit_num` bigint(20) unsigned NOT NULL,
+  `owner` bigint(20) unsigned NOT NULL,
+  `built_on` bigint(20) unsigned NOT NULL,
+  `last_used` bigint(20) unsigned NOT NULL,
+  `prune_safe` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `mode` bigint(20) unsigned NOT NULL,
+  `last_payment` bigint(20) unsigned NOT NULL,
+  `cost` int(10) unsigned NOT NULL,
+  `max_secure` int(10) unsigned NOT NULL,
+  `max_locked` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`vnum`),
+  KEY `owner_id` (`owner`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `lib_text`
 --
 
@@ -187,7 +313,7 @@ CREATE TABLE IF NOT EXISTS `MCL` (
   `reserved` enum('No','Yes') NOT NULL DEFAULT 'No',
   PRIMARY KEY (`id`),
   UNIQUE KEY `command` (`command`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=245 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=637 ;
 
 -- --------------------------------------------------------
 
@@ -470,7 +596,7 @@ CREATE TABLE IF NOT EXISTS `player_index` (
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Name` (`Name`),
   UNIQUE KEY `Email` (`Email`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -805,12 +931,12 @@ CREATE TABLE IF NOT EXISTS `tip_messages` (
 
 DROP TABLE IF EXISTS `trg_assigns`;
 CREATE TABLE IF NOT EXISTS `trg_assigns` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `type` int(10) unsigned NOT NULL DEFAULT '0',
-  `znum` int(10) unsigned NOT NULL DEFAULT '0',
-  `vnum` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `znum` (`znum`,`vnum`)
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `type` bigint(20) unsigned NOT NULL,
+  `owner` bigint(20) unsigned NOT NULL,
+  `vnum` bigint(20) unsigned NOT NULL,
+  `znum` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
