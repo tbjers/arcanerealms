@@ -114,6 +114,7 @@ void perform_mortal_where(struct char_data *ch, char *arg);
 void print_object_location(int num, struct obj_data *obj, struct char_data *ch, int recur);
 void show_obj_to_char(struct obj_data * object, struct char_data *ch, int mode);
 void sort_commands(void);
+void sort_socials(void);
 void send_tip_message(void);
 void check_pending_tasks(struct char_data *ch, int subcmd);
 int imm_titles (struct char_data *ch);
@@ -126,6 +127,8 @@ struct sort_struct {
 	int sort_pos;
 	byte is_social;
 }	*cmd_sort_info = NULL;
+
+struct sort_struct *soc_sort_info = NULL;
 
 ACMD(do_calendar);
 ACMD(do_color);
@@ -2462,6 +2465,7 @@ ACMD(do_toggle)
 
 
 int	num_of_cmds;
+int	num_of_socs;
 
 
 void sort_commands(void)
@@ -2478,7 +2482,7 @@ void sort_commands(void)
 	while (*complete_cmd_info[num_of_cmds].command != '\n')
 		num_of_cmds++;
 
-	/*check if there was an old sort info.. then free it -- aedit -- M. Scott*/
+	/*check if there was an old sort info.. then free it -- aedit -- m. scott*/
 	if (cmd_sort_info) free(cmd_sort_info);
 
 	/* create data array */
@@ -2489,10 +2493,8 @@ void sort_commands(void)
 		cmd_sort_info[a].sort_pos = a;
 		cmd_sort_info[a].is_social = (complete_cmd_info[a].command_pointer == do_action);
 	}
-	/* the infernal special case */
-	cmd_sort_info[find_command("insult")].is_social = TRUE;
 
-	/* Sort.  'a' starts at 1, not 0, to remove 'RESERVED' */
+	/* sort.  'a' starts at 1, not 0, to remove 'reserved' */
 	for (a = 1; a < num_of_cmds - 1; a++) {
 		for (b = a + 1; b < num_of_cmds; b++) {
 			/* if (strcmp(cmd_info[cmd_sort_info[a].sort_pos].command,
@@ -2507,6 +2509,44 @@ void sort_commands(void)
 	}
 }
 
+
+void sort_socials(void)
+{
+	int a, b, tmp;
+
+	num_of_socs = 0;
+
+	/*
+	 * first, count commands (num_of_commands is actually one greater than the
+	 * number of commands; it inclues the '\n'.
+	 */
+	while (*complete_soc_info[num_of_socs].command != '\n')
+		num_of_socs++;
+
+	/*check if there was an old sort info.. then free it -- aedit -- m. scott*/
+	if (soc_sort_info) free(soc_sort_info);
+
+	/* create data array */
+	CREATE(soc_sort_info, struct sort_struct, num_of_socs);
+
+	/* initialize it */
+	for (a = 1; a < num_of_socs; a++) {
+		soc_sort_info[a].sort_pos = a;
+		soc_sort_info[a].is_social = TRUE;
+	}
+
+	/* sort.  'a' starts at 1, not 0, to remove 'reserved' */
+	for (a = 1; a < num_of_socs - 1; a++) {
+		for (b = a + 1; b < num_of_socs; b++) {
+			if (strcmp(complete_soc_info[soc_sort_info[a].sort_pos].command,
+					complete_soc_info[soc_sort_info[b].sort_pos].command) > 0) {
+				tmp = soc_sort_info[a].sort_pos;
+				soc_sort_info[a].sort_pos = soc_sort_info[b].sort_pos;
+				soc_sort_info[b].sort_pos = tmp;
+			}
+		}
+	}
+}
 
 
 ACMD(do_commands)

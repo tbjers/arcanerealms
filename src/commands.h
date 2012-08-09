@@ -87,7 +87,6 @@ ACMD(do_help);
 ACMD(do_helpcheck);
 ACMD(do_hit);
 ACMD(do_house);
-ACMD(do_insult);
 ACMD(do_inventory);
 ACMD(do_invis);
 ACMD(do_ispell);
@@ -280,5 +279,6 @@ struct command_list_info {
 };
 
 extern struct master_command_info *complete_cmd_info;
+extern struct master_command_info *complete_soc_info;
 extern struct command_info *cmd_info;
 extern struct command_list_info command_list[];

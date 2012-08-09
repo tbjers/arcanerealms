@@ -45,7 +45,6 @@ void create_command_list(void);
 void free_action(struct social_messg *mess);
 void free_social_messages(void);
 ACMD(do_action);
-ACMD(do_insult);
 
 struct social_messg *soc_mess_list = NULL;
 
@@ -205,56 +204,6 @@ ACMD(do_action)
 }
 
 
-
-ACMD(do_insult)
-{
-	struct char_data *victim;
-
-	one_argument(argument, arg);
-
-	if (*arg) {
-		if (!(victim = get_char_room_vis(ch, arg, NULL, 0)))
-			send_to_char("Can't hear you!\r\n", ch);
-		else {
-			if (victim != ch) {
-
-				sprintf(buf, "You insult %s.\r\n", GET_NAME(victim));
-				send_to_char(buf, ch);
-
-				switch (number(0, 2)) {
-				case 0:
-					if (GET_SEX(ch) == SEX_MALE) {
-						if (GET_SEX(victim) == SEX_MALE)
-							act("$n accuses you of fighting like a woman!", FALSE, ch, 0, victim, TO_VICT | TO_OOC);
-						else
-							act("$n says that women can't fight.", FALSE, ch, 0, victim, TO_VICT | TO_OOC);
-					} else {		/* Ch == Woman */
-						if (GET_SEX(victim) == SEX_MALE)
-							act("$n accuses you of having the smallest... (brain?)",
-						FALSE, ch, 0, victim, TO_VICT | TO_OOC);
-						else
-							act("$n tells you that you'd lose a beauty contest against a troll.",
-						FALSE, ch, 0, victim, TO_VICT | TO_OOC);
-					}
-					break;
-				case 1:
-					act("$n calls your mother a bitch!", FALSE, ch, 0, victim, TO_VICT | TO_OOC);
-					break;
-				default:
-					act("$n tells you to get lost!", FALSE, ch, 0, victim, TO_VICT | TO_OOC);
-					break;
-				}			/* end switch */
-
-				act("$n insults $N.", TRUE, ch, 0, victim, TO_NOTVICT | TO_OOC);
-			} else {			/* ch == victim */
-				send_to_char("You feel insulted.\r\n", ch);
-			}
-		}
-	} else
-		send_to_char("I'm sure you don't want to insult *everybody*...\r\n", ch);
-}
-
-
 void boot_social_messages(void)
 {
 	MYSQL_RES *result;
@@ -273,13 +222,35 @@ void boot_social_messages(void)
 	top_of_socialt = mysql_num_rows(result);
 	mlog("   %d socials loaded.", top_of_socialt);
 
-	CREATE(soc_mess_list, struct social_messg, top_of_socialt);
+	CREATE(soc_mess_list, struct social_messg, top_of_socialt + 1);
 
-	for(curr_soc = 0; curr_soc < top_of_socialt; curr_soc++)
+	/* The first command in the list (0) should be reserved. */
+	soc_mess_list[0].command = str_dup("RESERVED");
+	soc_mess_list[0].sort_as = str_dup("RESERVED");
+	soc_mess_list[0].hide = 0;
+	soc_mess_list[0].act_nr = 0;
+	soc_mess_list[0].min_char_position = 0;
+	soc_mess_list[0].min_victim_position = 0;
+	soc_mess_list[0].char_no_arg = str_dup("");
+	soc_mess_list[0].others_no_arg = str_dup("");
+	soc_mess_list[0].char_found = str_dup("");
+	soc_mess_list[0].others_found = str_dup("");
+	soc_mess_list[0].vict_found = str_dup("");
+	soc_mess_list[0].not_found = str_dup("");
+	soc_mess_list[0].char_auto = str_dup("");
+	soc_mess_list[0].others_auto = str_dup("");
+	soc_mess_list[0].char_body_found = str_dup("");
+	soc_mess_list[0].others_body_found = str_dup("");
+	soc_mess_list[0].vict_body_found = str_dup("");
+	soc_mess_list[0].char_obj_found = str_dup("");
+	soc_mess_list[0].others_obj_found = str_dup("");
+
+	for(curr_soc = 1; curr_soc <= top_of_socialt; curr_soc++)
 	{
 		row = mysql_fetch_row(result);
 		fieldlength = mysql_fetch_lengths(result);
 		soc_mess_list[curr_soc].id = atoi(row[0]);
+		soc_mess_list[curr_soc].act_nr = curr_soc;
 		soc_mess_list[curr_soc].command = str_dup(row[1]);
 		soc_mess_list[curr_soc].sort_as = str_dup(row[2]);
 		/* numbers */
@@ -305,5 +276,5 @@ void boot_social_messages(void)
 	top_of_socialt = curr_soc - 1;
 
 	mysql_free_result(result);
-
 }
+

@@ -33,6 +33,7 @@ extern struct social_messg *soc_mess_list;
 
 /* local variables */
 struct master_command_info *complete_cmd_info = NULL;
+struct master_command_info *complete_soc_info = NULL;
 struct command_info *cmd_info = NULL;
 int top_of_commandt = -1;
 int num_reserved_cmds = 0;
@@ -63,7 +64,7 @@ struct command_list_info command_list[] = {
 	{do_gen_door, "do_gen_door"}, {do_gen_ps, "do_gen_ps"}, {do_gen_write, "do_gen_write"}, {do_get, "do_get"}, {do_give, "do_give"}, 	/* 65 */
 	{do_gold, "do_gold"}, {do_goto, "do_goto"}, {do_grab, "do_grab"}, {do_group, "do_group"}, {do_gsay, "do_gsay"}, 	/* 70 */
 	{do_hcontrol, "do_hcontrol"}, {do_help, "do_help"}, {do_helpcheck, "do_helpcheck"}, {do_hit, "do_hit"}, {do_house, "do_house"}, 	/* 75 */
-	{do_insult, "do_insult"}, {do_inventory, "do_inventory"}, {do_invis, "do_invis"}, {do_ispell, "do_ispell"}, {do_kick, "do_kick"}, 	/* 80 */
+	{do_tester, "!UNUSED!"}, {do_inventory, "do_inventory"}, {do_invis, "do_invis"}, {do_ispell, "do_ispell"}, {do_kick, "do_kick"}, 	/* 80 */
 	{do_kill, "do_kill"}, {do_languages, "do_languages"}, {do_last, "do_last"}, {do_leave, "do_leave"}, {do_lines, "do_lines"}, 	/* 85 */
 	{do_listskills, "do_listskills"}, {do_load, "do_load"}, {do_look, "do_look"}, {do_meditate, "do_meditate"}, {do_newbie, "do_newbie"}, 	 /* 90 */
 	{do_not_here, "do_not_here"}, {do_oasis, "do_oasis"}, {do_order, "do_order"}, {do_overflow, "do_overflow"}, {do_page, "do_page"}, 	/* 95 */
@@ -104,7 +105,6 @@ struct command_list_info command_list[] = {
 };
 
 
-/* this function adds in the loaded socials and assigns them a command # */
 void create_command_list(void)
 {
 	int i, k;
@@ -117,7 +117,6 @@ void create_command_list(void)
 
 	CREATE(complete_cmd_info, struct master_command_info, top_of_commandt + 2);
 
-	/* this loop sorts the socials and commands together into one big list */
 	i = 0;
 	k = 0;
 	while (i <= top_of_commandt) {
@@ -143,6 +142,43 @@ void create_command_list(void)
 	mlog("Command info rebuilt, %d total commands.", k);
 }
 
+
+void create_socials_list(void)
+{
+	int i, k;
+
+	/* free up old socials list */
+	if (complete_soc_info) {
+		free(complete_soc_info);
+		complete_soc_info = NULL;
+	}
+
+	CREATE(complete_soc_info, struct master_command_info, top_of_socialt + 2);
+
+	i = 0;
+	k = 0;
+	while (i <= top_of_socialt) {
+		complete_soc_info[k].command			= soc_mess_list[i].command;
+		complete_soc_info[k].sort_as			= soc_mess_list[i].sort_as;
+		complete_soc_info[k].minimum_position   = soc_mess_list[i++].min_char_position;
+		complete_soc_info[k].command_pointer	= do_action;
+		complete_soc_info[k].rights				= RIGHTS_MEMBER;
+		complete_soc_info[k].subcmd				= 0;
+		complete_soc_info[k].copyover			= 1;
+		complete_soc_info[k].enabled			= 1;
+		complete_soc_info[k++].reserved			= 0;
+	}
+	complete_soc_info[k].command				= str_dup("\n");
+	complete_soc_info[k].sort_as				= str_dup("zzzzzzzzzzz");
+	complete_soc_info[k].minimum_position		= 0;
+	complete_soc_info[k].command_pointer		= 0;
+	complete_soc_info[k].rights					= RIGHTS_MEMBER;
+	complete_soc_info[k].subcmd					= 0;
+	complete_soc_info[k].copyover				= 1;
+	complete_soc_info[k].enabled				= 1;
+	complete_soc_info[k].reserved				= 0;
+	mlog("Social tree rebuilt, %d total socials.", k);
+}
 
 /* Loads commands from MySQL */
 void boot_command_list(void)
@@ -182,7 +218,6 @@ void boot_command_list(void)
 	{
 		row = mysql_fetch_row(result);
 		fieldlength = mysql_fetch_lengths(result);
-		mlog("%10s :: %s", row[1], row[0]);
 		cmd_info[curr_com].command = str_dup(row[0]);
 		cmd_info[curr_com].sort_as = str_dup(row[1]);
 		cmd_info[curr_com].minimum_position = atoi(row[2]);

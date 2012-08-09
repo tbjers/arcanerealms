@@ -248,6 +248,7 @@ void assign_skills(void);
 void boot_social_messages(void);
 void clean_players(int preview);
 void create_command_list(void);
+void create_socials_list(void);
 void free_alias(struct alias_data *a);
 void free_object_strings(struct obj_data *obj);
 void free_object_strings_proto(struct obj_data *obj);
@@ -832,6 +833,9 @@ void boot_db(void)
 
 	mlog("Creating Master Command List.");
 	create_command_list();
+
+	mlog("Creating Socials List.");
+	create_socials_list();
 
 	mlog("Assigning Special Procedures.");
 	assign_spec_procs(0,0,0,1);

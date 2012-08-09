@@ -39,8 +39,8 @@ extern char     *position_types[];
 #define	RESERVE_CMDS		7
 
 /* external functs */
-void sort_commands(void); /* aedit patch -- M. Scott */
-void create_command_list(void);
+void sort_socials(void); /* aedit patch -- M. Scott */
+void create_socials_list(void);
 void free_action(struct social_messg *action);
 
 
@@ -137,8 +137,8 @@ void aedit_save_internally(struct descriptor_data *d) {
 		new_soc_mess_list[++top_of_socialt] = *OLC_ACTION(d);
 		free(soc_mess_list);
 		soc_mess_list = new_soc_mess_list;
-		create_command_list();
-		sort_commands();
+		create_socials_list();
+		sort_socials();
 		aedit_mysql_save(d);
 	}
 	/* pass the editted action back to the list - no need to add */

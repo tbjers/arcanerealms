@@ -255,6 +255,9 @@ void command_interpreter(struct char_data *ch, char *argument)
 	}
 
 	if (*complete_cmd_info[cmd].command == '\n') {
+		if (emote_interpreter(ch, line, arg)) {
+			return;
+		}
 		*buf2 = '\0';
 		for (cmd = 0; *complete_cmd_info[cmd].command != '\n'; cmd++)
 			if (IS_NPC(ch) || GOT_RIGHTS(ch, complete_cmd_info[cmd].rights))
@@ -304,6 +307,83 @@ void command_interpreter(struct char_data *ch, char *argument)
 		}
 	} else if (no_specials || !special(ch, cmd, line))
 		((*complete_cmd_info[cmd].command_pointer) (ch, line, cmd, complete_cmd_info[cmd].subcmd));
+}
+
+/*
+ * This is the emote interpreter called from game_loop() in comm.c
+ * It makes sure you have the proper rights and position to use the social,
+ * then calls do_action with the appropriate social action.
+ */
+bool emote_interpreter(struct char_data *ch, char *line, char *arg)
+{
+	int soc, length;
+
+	for (length = strlen(arg), soc = 0; *complete_soc_info[soc].command != '\n'; soc++)
+		if (!strncmp(complete_soc_info[soc].command, arg, length))
+			if (IS_NPC(ch) || GOT_RIGHTS(ch, complete_soc_info[soc].rights))
+				break;
+
+	if (!complete_soc_info[soc].enabled) {
+		send_to_char("This emote has been disabled.\r\n", ch);
+		return TRUE;
+	}
+
+	if (GET_POS(ch) <= complete_soc_info[soc].minimum_position) {
+		if (GET_POS(ch) == POS_MEDITATING && ((number(1, 101) > (GET_SKILL(ch, SKILL_MEDITATE)/100)))) {
+			send_to_char("You break your meditation!\r\n", ch);
+			GET_POS(ch) = POS_RESTING;
+		}
+	}
+
+	if (*complete_soc_info[soc].command == '\n') {
+		*buf2 = '\0';
+		for (soc = 0; *complete_soc_info[soc].command != '\n'; soc++)
+			if (IS_NPC(ch) || GOT_RIGHTS(ch, complete_soc_info[soc].rights))
+				if (SOUNDEX_MATCH((char*)complete_soc_info[soc].command, arg))
+					sprintf(buf2 + strlen(buf2), "%s ", complete_soc_info[soc].command);
+		if (*buf2) {
+			sprintf(buf, "Unknown command, \"%s\", perhaps you meant: &W%s&n\r\n", arg, buf2);
+			send_to_char(buf, ch);
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
+	else if (!IS_NPC(ch) && PLR_FLAGGED(ch, PLR_FROZEN) && !IS_IMPLEMENTOR(ch))
+		send_to_char("You try, but the mind-numbing cold prevents you...\r\n", ch);
+	else if (GET_POS(ch) < complete_soc_info[soc].minimum_position) {
+		switch (GET_POS(ch)) {
+		case POS_DEAD:
+			send_to_char("Lie still; you are DEAD!!!\r\n", ch);
+			break;
+		case POS_INCAP:
+		case POS_MORTALLYW:
+			send_to_char("You are in a pretty bad shape, unable to do anything!\r\n", ch);
+			break;
+		case POS_STUNNED:
+			send_to_char("All you can do right now is think about the stars!\r\n", ch);
+			break;
+		case POS_SLEEPING:
+			send_to_char("In your dreams, or what?\r\n", ch);
+			break;
+		case POS_RESTING:
+			send_to_char("Nah... You feel too relaxed to do that..\r\n", ch);
+			break;
+		case POS_SITTING:
+			send_to_char("Maybe you should get on your feet first?\r\n", ch);
+			break;
+		case POS_FIGHTING:
+			send_to_char("No way!  You're fighting for your life!\r\n", ch);
+			break;
+		case POS_MEDITATING:
+			send_to_char("All you can think about is your meditation.\r\n", ch);
+			break;
+		}
+	} else {
+		((*complete_soc_info[soc].command_pointer) (ch, line, soc, 0));
+	}
+	return TRUE;
 }
 
 /**************************************************************************
@@ -768,8 +848,8 @@ int	find_social(const char *social)
 {
 	int soc;
 
-	for (soc = 0; *complete_cmd_info[soc].command != '\n'; soc++)
-		if (!strcmp(complete_cmd_info[soc].command, social))
+	for (soc = 0; *complete_soc_info[soc].command != '\n'; soc++)
+		if (!strcmp(complete_soc_info[soc].command, social))
 			return (soc);
 
 	return (-1);
