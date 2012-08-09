@@ -87,6 +87,7 @@ ACMD(do_tedit)
 {
 	int l, i;
 	char field[MAX_INPUT_LENGTH];
+	char *line;
 	 
 	struct {
 		char *cmd;
@@ -121,8 +122,10 @@ ACMD(do_tedit)
 	};
 
 	if (ch->desc == NULL)
-		//return;
+		return;
 	 
+	skip_spaces(&argument);
+
 	half_chop(argument, field, buf);
 
 	if (!*field) {
