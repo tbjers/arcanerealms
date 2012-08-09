@@ -1,42 +1,17 @@
--- phpMyAdmin SQL Dump
--- version 3.5.2.1
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Aug 06, 2012 at 09:42 PM
--- Server version: 5.1.61
--- PHP Version: 5.3.3
-
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
---
--- Database: `arcanere_g`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `boot_index`
---
 
 DROP TABLE IF EXISTS `boot_index`;
 CREATE TABLE IF NOT EXISTS `boot_index` (
   `znum` bigint(20) unsigned NOT NULL,
   `mini` tinyint(1) unsigned DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `configuration`
---
 
 DROP TABLE IF EXISTS `configuration`;
 CREATE TABLE IF NOT EXISTS `configuration` (
@@ -46,12 +21,6 @@ CREATE TABLE IF NOT EXISTS `configuration` (
   `field` text,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cultures_list`
---
 
 DROP TABLE IF EXISTS `cultures_list`;
 CREATE TABLE IF NOT EXISTS `cultures_list` (
@@ -65,12 +34,6 @@ CREATE TABLE IF NOT EXISTS `cultures_list` (
   PRIMARY KEY (`id`),
   KEY `Name` (`Name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `events`
---
 
 DROP TABLE IF EXISTS `events`;
 CREATE TABLE IF NOT EXISTS `events` (
@@ -86,24 +49,12 @@ CREATE TABLE IF NOT EXISTS `events` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `guild_equipment`
---
-
 DROP TABLE IF EXISTS `guild_equipment`;
 CREATE TABLE IF NOT EXISTS `guild_equipment` (
   `guildie` bigint(20) unsigned NOT NULL,
   `vnum` bigint(20) unsigned NOT NULL,
   `guild` bigint(20) unsigned NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `guild_guildies`
---
 
 DROP TABLE IF EXISTS `guild_guildies`;
 CREATE TABLE IF NOT EXISTS `guild_guildies` (
@@ -119,12 +70,6 @@ CREATE TABLE IF NOT EXISTS `guild_guildies` (
   `sponsors` int(10) unsigned NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `guild_help`
---
-
 DROP TABLE IF EXISTS `guild_help`;
 CREATE TABLE IF NOT EXISTS `guild_help` (
   `guild` bigint(20) unsigned NOT NULL,
@@ -132,12 +77,6 @@ CREATE TABLE IF NOT EXISTS `guild_help` (
   `entry` text NOT NULL,
   PRIMARY KEY (`guild`,`keyword`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `guild_index`
---
 
 DROP TABLE IF EXISTS `guild_index`;
 CREATE TABLE IF NOT EXISTS `guild_index` (
@@ -159,12 +98,6 @@ CREATE TABLE IF NOT EXISTS `guild_index` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `guild_ranks`
---
-
 DROP TABLE IF EXISTS `guild_ranks`;
 CREATE TABLE IF NOT EXISTS `guild_ranks` (
   `guild` bigint(20) unsigned NOT NULL,
@@ -172,12 +105,6 @@ CREATE TABLE IF NOT EXISTS `guild_ranks` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`guild`,`num`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `guild_skills`
---
 
 DROP TABLE IF EXISTS `guild_skills`;
 CREATE TABLE IF NOT EXISTS `guild_skills` (
@@ -187,12 +114,6 @@ CREATE TABLE IF NOT EXISTS `guild_skills` (
   PRIMARY KEY (`guild`,`skill`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `guild_sponsorer`
---
-
 DROP TABLE IF EXISTS `guild_sponsorer`;
 CREATE TABLE IF NOT EXISTS `guild_sponsorer` (
   `guildie` bigint(20) unsigned NOT NULL,
@@ -201,24 +122,12 @@ CREATE TABLE IF NOT EXISTS `guild_sponsorer` (
   PRIMARY KEY (`guildie`,`idnum`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `guild_zones`
---
-
 DROP TABLE IF EXISTS `guild_zones`;
 CREATE TABLE IF NOT EXISTS `guild_zones` (
   `guild` bigint(20) unsigned NOT NULL,
   `znum` int(10) unsigned NOT NULL,
   PRIMARY KEY (`guild`,`znum`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `help_categories`
---
 
 DROP TABLE IF EXISTS `help_categories`;
 CREATE TABLE IF NOT EXISTS `help_categories` (
@@ -229,12 +138,6 @@ CREATE TABLE IF NOT EXISTS `help_categories` (
   `sortorder` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `help_index`
---
 
 DROP TABLE IF EXISTS `help_index`;
 CREATE TABLE IF NOT EXISTS `help_index` (
@@ -254,12 +157,6 @@ CREATE TABLE IF NOT EXISTS `help_index` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `house_index`
---
-
 DROP TABLE IF EXISTS `house_index`;
 CREATE TABLE IF NOT EXISTS `house_index` (
   `vnum` bigint(20) unsigned NOT NULL,
@@ -278,12 +175,6 @@ CREATE TABLE IF NOT EXISTS `house_index` (
   KEY `owner_id` (`owner`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `lib_text`
---
-
 DROP TABLE IF EXISTS `lib_text`;
 CREATE TABLE IF NOT EXISTS `lib_text` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -291,13 +182,7 @@ CREATE TABLE IF NOT EXISTS `lib_text` (
   `text` text,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `MCL`
---
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 DROP TABLE IF EXISTS `MCL`;
 CREATE TABLE IF NOT EXISTS `MCL` (
@@ -313,13 +198,7 @@ CREATE TABLE IF NOT EXISTS `MCL` (
   `reserved` enum('No','Yes') NOT NULL DEFAULT 'No',
   PRIMARY KEY (`id`),
   UNIQUE KEY `command` (`command`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=637 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mob_index`
---
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1880 ;
 
 DROP TABLE IF EXISTS `mob_index`;
 CREATE TABLE IF NOT EXISTS `mob_index` (
@@ -365,12 +244,6 @@ CREATE TABLE IF NOT EXISTS `mob_index` (
   PRIMARY KEY (`znum`,`vnum`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `mob_tutor_data`
---
-
 DROP TABLE IF EXISTS `mob_tutor_data`;
 CREATE TABLE IF NOT EXISTS `mob_tutor_data` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -384,12 +257,6 @@ CREATE TABLE IF NOT EXISTS `mob_tutor_data` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `obj_affects`
---
-
 DROP TABLE IF EXISTS `obj_affects`;
 CREATE TABLE IF NOT EXISTS `obj_affects` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -398,12 +265,6 @@ CREATE TABLE IF NOT EXISTS `obj_affects` (
   `modifier` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`,`vnum`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `obj_extradescs`
---
 
 DROP TABLE IF EXISTS `obj_extradescs`;
 CREATE TABLE IF NOT EXISTS `obj_extradescs` (
@@ -414,12 +275,6 @@ CREATE TABLE IF NOT EXISTS `obj_extradescs` (
   `description` text NOT NULL,
   PRIMARY KEY (`znum`,`vnum`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `obj_index`
---
 
 DROP TABLE IF EXISTS `obj_index`;
 CREATE TABLE IF NOT EXISTS `obj_index` (
@@ -449,12 +304,6 @@ CREATE TABLE IF NOT EXISTS `obj_index` (
   FULLTEXT KEY `action_description` (`action_description`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `pending_users`
---
-
 DROP TABLE IF EXISTS `pending_users`;
 CREATE TABLE IF NOT EXISTS `pending_users` (
   `PlayerID` bigint(20) unsigned NOT NULL,
@@ -464,12 +313,6 @@ CREATE TABLE IF NOT EXISTS `pending_users` (
   UNIQUE KEY `Code` (`Code`),
   KEY `Code_2` (`Code`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `player_affects`
---
 
 DROP TABLE IF EXISTS `player_affects`;
 CREATE TABLE IF NOT EXISTS `player_affects` (
@@ -481,12 +324,6 @@ CREATE TABLE IF NOT EXISTS `player_affects` (
   `bitvector` varchar(255) NOT NULL DEFAULT '0',
   KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `player_index`
---
 
 DROP TABLE IF EXISTS `player_index`;
 CREATE TABLE IF NOT EXISTS `player_index` (
@@ -598,12 +435,6 @@ CREATE TABLE IF NOT EXISTS `player_index` (
   UNIQUE KEY `Email` (`Email`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `player_notifylist`
---
-
 DROP TABLE IF EXISTS `player_notifylist`;
 CREATE TABLE IF NOT EXISTS `player_notifylist` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -612,24 +443,12 @@ CREATE TABLE IF NOT EXISTS `player_notifylist` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `player_quests`
---
-
 DROP TABLE IF EXISTS `player_quests`;
 CREATE TABLE IF NOT EXISTS `player_quests` (
   `PlayerID` bigint(20) unsigned NOT NULL,
   `QuestNum` int(10) unsigned NOT NULL,
   PRIMARY KEY (`PlayerID`,`QuestNum`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `player_recognized`
---
 
 DROP TABLE IF EXISTS `player_recognized`;
 CREATE TABLE IF NOT EXISTS `player_recognized` (
@@ -640,12 +459,6 @@ CREATE TABLE IF NOT EXISTS `player_recognized` (
   UNIQUE KEY `PlayerID` (`PlayerID`,`MemID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `player_rpdescriptions`
---
-
 DROP TABLE IF EXISTS `player_rpdescriptions`;
 CREATE TABLE IF NOT EXISTS `player_rpdescriptions` (
   `PlayerID` bigint(20) unsigned NOT NULL,
@@ -654,24 +467,12 @@ CREATE TABLE IF NOT EXISTS `player_rpdescriptions` (
   PRIMARY KEY (`PlayerID`,`Row`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `player_rplogs`
---
-
 DROP TABLE IF EXISTS `player_rplogs`;
 CREATE TABLE IF NOT EXISTS `player_rplogs` (
   `PlayerID` bigint(20) unsigned NOT NULL,
   `Row` int(10) unsigned NOT NULL,
   `Log` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `player_skills`
---
 
 DROP TABLE IF EXISTS `player_skills`;
 CREATE TABLE IF NOT EXISTS `player_skills` (
@@ -682,24 +483,12 @@ CREATE TABLE IF NOT EXISTS `player_skills` (
   KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `puff_messages`
---
-
 DROP TABLE IF EXISTS `puff_messages`;
 CREATE TABLE IF NOT EXISTS `puff_messages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Message` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `qst_index`
---
 
 DROP TABLE IF EXISTS `qst_index`;
 CREATE TABLE IF NOT EXISTS `qst_index` (
@@ -722,12 +511,6 @@ CREATE TABLE IF NOT EXISTS `qst_index` (
   PRIMARY KEY (`znum`,`vnum`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `races_list`
---
-
 DROP TABLE IF EXISTS `races_list`;
 CREATE TABLE IF NOT EXISTS `races_list` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -745,12 +528,6 @@ CREATE TABLE IF NOT EXISTS `races_list` (
   `MaxAttrib` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `rent_objects`
---
 
 DROP TABLE IF EXISTS `rent_objects`;
 CREATE TABLE IF NOT EXISTS `rent_objects` (
@@ -783,12 +560,6 @@ CREATE TABLE IF NOT EXISTS `rent_objects` (
   KEY `player_id` (`obj_order`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `rent_players`
---
-
 DROP TABLE IF EXISTS `rent_players`;
 CREATE TABLE IF NOT EXISTS `rent_players` (
   `PlayerID` bigint(20) unsigned NOT NULL,
@@ -799,12 +570,6 @@ CREATE TABLE IF NOT EXISTS `rent_players` (
   `Account` bigint(20) unsigned NOT NULL,
   `NumItems` int(10) unsigned NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `shp_index`
---
 
 DROP TABLE IF EXISTS `shp_index`;
 CREATE TABLE IF NOT EXISTS `shp_index` (
@@ -830,12 +595,6 @@ CREATE TABLE IF NOT EXISTS `shp_index` (
   PRIMARY KEY (`znum`,`vnum`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `shp_keywords`
---
-
 DROP TABLE IF EXISTS `shp_keywords`;
 CREATE TABLE IF NOT EXISTS `shp_keywords` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -846,12 +605,6 @@ CREATE TABLE IF NOT EXISTS `shp_keywords` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `shp_products`
---
-
 DROP TABLE IF EXISTS `shp_products`;
 CREATE TABLE IF NOT EXISTS `shp_products` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -861,12 +614,6 @@ CREATE TABLE IF NOT EXISTS `shp_products` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `shp_rooms`
---
-
 DROP TABLE IF EXISTS `shp_rooms`;
 CREATE TABLE IF NOT EXISTS `shp_rooms` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -875,12 +622,6 @@ CREATE TABLE IF NOT EXISTS `shp_rooms` (
   `room` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `socials`
---
 
 DROP TABLE IF EXISTS `socials`;
 CREATE TABLE IF NOT EXISTS `socials` (
@@ -906,13 +647,7 @@ CREATE TABLE IF NOT EXISTS `socials` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `command` (`command`),
   UNIQUE KEY `sort_as` (`sort_as`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tip_messages`
---
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 DROP TABLE IF EXISTS `tip_messages`;
 CREATE TABLE IF NOT EXISTS `tip_messages` (
@@ -923,12 +658,6 @@ CREATE TABLE IF NOT EXISTS `tip_messages` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `trg_assigns`
---
-
 DROP TABLE IF EXISTS `trg_assigns`;
 CREATE TABLE IF NOT EXISTS `trg_assigns` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -938,12 +667,6 @@ CREATE TABLE IF NOT EXISTS `trg_assigns` (
   `znum` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `trg_index`
---
 
 DROP TABLE IF EXISTS `trg_index`;
 CREATE TABLE IF NOT EXISTS `trg_index` (
@@ -957,12 +680,6 @@ CREATE TABLE IF NOT EXISTS `trg_index` (
   `cmds` text NOT NULL,
   PRIMARY KEY (`znum`,`vnum`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `usage_history`
---
 
 DROP TABLE IF EXISTS `usage_history`;
 CREATE TABLE IF NOT EXISTS `usage_history` (
@@ -979,12 +696,6 @@ CREATE TABLE IF NOT EXISTS `usage_history` (
   `Copyovers` tinyint(3) unsigned NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `wld_exits`
---
-
 DROP TABLE IF EXISTS `wld_exits`;
 CREATE TABLE IF NOT EXISTS `wld_exits` (
   `id` int(10) unsigned NOT NULL,
@@ -999,12 +710,6 @@ CREATE TABLE IF NOT EXISTS `wld_exits` (
   PRIMARY KEY (`znum`,`vnum`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `wld_extradescs`
---
-
 DROP TABLE IF EXISTS `wld_extradescs`;
 CREATE TABLE IF NOT EXISTS `wld_extradescs` (
   `id` int(10) unsigned NOT NULL,
@@ -1014,12 +719,6 @@ CREATE TABLE IF NOT EXISTS `wld_extradescs` (
   `description` text NOT NULL,
   PRIMARY KEY (`znum`,`vnum`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `wld_index`
---
 
 DROP TABLE IF EXISTS `wld_index`;
 CREATE TABLE IF NOT EXISTS `wld_index` (
@@ -1040,12 +739,6 @@ CREATE TABLE IF NOT EXISTS `wld_index` (
   PRIMARY KEY (`znum`,`vnum`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `zon_commands`
---
-
 DROP TABLE IF EXISTS `zon_commands`;
 CREATE TABLE IF NOT EXISTS `zon_commands` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -1060,12 +753,6 @@ CREATE TABLE IF NOT EXISTS `zon_commands` (
   `cmdnum` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `zon_index`
---
 
 DROP TABLE IF EXISTS `zon_index`;
 CREATE TABLE IF NOT EXISTS `zon_index` (
